@@ -48,11 +48,11 @@ public class CacheConfiguration {
     @Bean
     public HibernatePropertiesCustomizer hibernatePropertiesCustomizer() {
         return properties -> {
-            properties.put("hibernate.cache.use_second_level_cache", true);
-            properties.put("hibernate.cache.use_query_cache", true);
+            properties.put("hibernate.cache.use_second_level_cache", "true");
+            properties.put("hibernate.cache.use_query_cache", "true");
             properties.put("hibernate.cache.redisson.config", "./redisson-config.yml");
-            properties.put("hibernate.cache.redisson.entity.expiration.time_to_live", String.valueOf(10000));
-            properties.put("hibernate.cache.redisson.entity.expiration.max_idle_time", String.valueOf(5000));
+            properties.put("hibernate.cache.redisson.entity.expiration.time_to_live", "10000");
+            properties.put("hibernate.cache.redisson.entity.expiration.max_idle_time", "5000");
         };
     }
 
