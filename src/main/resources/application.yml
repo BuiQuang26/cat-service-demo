@@ -18,18 +18,19 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        cache:
-          use_second_level_cache: true
-          use_query_cache: true
-          region:
-            factory_class: org.redisson.hibernate.RedissonRegionFactory
-          redisson:
-            config: ./redisson-config.yml
-            hibernate_2nd_cat_cache:
-              expiration:
-                time_to_live: 30000 # millisecond
+#    properties:
+#      hibernate:
+#        cache:
+#          use_second_level_cache: true
+#          use_query_cache: true
+#          region:
+#            factory_class: org.redisson.hibernate.RedissonRegionFactory
+#          redisson:
+#            config: ./redisson-config.yml
+#            entity:
+#              expiration:
+#                time_to_live: 30000 # millisecond
+#                max_idle_time: 20000 # millisecond
   datasource:
     url: "jdbc:mysql://localhost:3306/cat-service-demo?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true"
     username: "root"

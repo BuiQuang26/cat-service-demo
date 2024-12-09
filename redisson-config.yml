@@ -10,5 +10,5 @@ singleServerConfig:
   retryInterval: 1500
 threads: 16
 nettyThreads: 32
-codec: !<org.redisson.codec.JsonJacksonCodec> {}
+codec: !<org.redisson.codec.Kryo5Codec> {}
 transportMode: "NIO"

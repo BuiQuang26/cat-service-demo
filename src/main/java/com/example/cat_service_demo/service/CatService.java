@@ -5,6 +5,8 @@ import com.example.cat_service_demo.domain.Cat;
 import com.example.cat_service_demo.repositories.CatRepository;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,12 +24,12 @@ public class CatService {
         this.cacheManager = cacheManager;
     }
 
-//    @CachePut(value = CacheNameConstants.CAT_CACHE, key = "#cat.id")
+    @CachePut(value = CacheNameConstants.CAT_CACHE, key = "#cat.id")
     public Cat create(Cat cat) {
         return catRepository.save(cat);
     }
 
-//    @Cacheable(value = CacheNameConstants.CAT_CACHE, key = "#id")
+    @Cacheable(value = CacheNameConstants.CAT_CACHE, key = "#id")
     public Cat getById(Long id) {
         return catRepository.findById(id).orElseThrow();
     }

@@ -6,7 +6,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import java.io.Serializable;
 
 @Entity
-@org.hibernate.annotations.Cache(region = "hibernate_2nd_cat_cache", usage = CacheConcurrencyStrategy.READ_WRITE)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "cat")
 public class Cat implements Serializable {
 
