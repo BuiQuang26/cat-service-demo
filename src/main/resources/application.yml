@@ -1,0 +1,61 @@
+
+logging:
+  level:
+    root: info
+
+spring:
+  application:
+    name: cat-service-demo
+#  cache:
+#    type: redis
+#    redis:
+#      time-to-live: 60000 # millisecond
+#      cache-null-values: true
+#      key-prefix: "cat-service:"
+#    redisson:
+#      config: ./redisson-config.yml
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: true
+          use_query_cache: true
+          region:
+            factory_class: org.redisson.hibernate.RedissonRegionFactory
+          redisson:
+            config: ./redisson-config.yml
+            hibernate_2nd_cat_cache:
+              expiration:
+                time_to_live: 30000 # millisecond
+  datasource:
+    url: "jdbc:mysql://localhost:3306/cat-service-demo?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true"
+    username: "root"
+    password: "root"
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      client-name: "cat-service"
+      connect-timeout: 5000
+
+# config spring cache base on redis
+redis:
+  address: "redis://127.0.0.1:6379"
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
